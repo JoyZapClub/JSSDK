@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>JoyZap GameSDK Demo</title>
+  </head>
+  <body>
+    <button class="btn btn_primary" id="login">Login</button>
+    <button class="btn btn_primary" id="resizeScreenN">Portrait Fullscreen</button>
+    <button class="btn btn_primary" id="resizeScreenH">Landscape Fullscreen</button>
+    <button class="btn btn_primary" id="exitWebview">Exit WebView</button>
+  </body>
+</html>
+<script src="./GameSDK.1.0.1.umd.js"></script>
+<script>
+GameSDK.init({
+  gameId: `params.gameId`,
+  onSuccess: () => {
+    console.log('GameSDK initialized successfully');
+
+    // Login
+    document.getElementById('login').onclick = () => {
+      GameSDK.login({
+        success: (res) => {
+          console.log(`Login successful: ${JSON.stringify(res)}`);
+        },
+        fail: (error) => {
+          console.log('Login failed:', error);
+        }
+      });
+    };
+
+    // Portrait fullscreen
+    document.getElementById('resizeScreenN').onclick = () => {
+      GameSDK.resizeScreen({
+        fullScreen: 'show', // "hide" means non-fullscreen, "show" means fullscreen
+        display: 1,         // 1 = portrait
+        success: () => {},
+        fail: (error) => {}
+      });
+    };
+
+    // Landscape fullscreen
+    document.getElementById('resizeScreenH').onclick = () => {
+      GameSDK.resizeScreen({
+        fullScreen: 'show',
+        display: 2,         // 2 = landscape
+        success: () => {},
+        fail: (error) => {}
+      });
+    };
+
+    // Exit WebView
+    document.getElementById('exitWebview').onclick = () => {
+      GameSDK.exitWebview({
+        success: (res) => {},
+        fail: (error) => {}
+      });
+    };
+  },
+  onFail: (error) => {
+    console.warn('GameSDK initialization failed:', error);
+  }
+});
+</script>
