@@ -1,6 +1,3 @@
-
-## Table of Contents
-
 - [Introduction](#introduction)  
 - [Getting Started](#getting-started)  
 - [Web Integration](#web-integration)  
