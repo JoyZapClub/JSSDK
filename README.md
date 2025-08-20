@@ -1,15 +1,18 @@
-- [Introduction](#introduction)  
-- [Getting Started](#getting-started)  
-- [Web Integration](#web-integration)  
-- [Cocos Project Integration](#cocos-project-integration)  
-- [API Reference](#api-reference)  
-  - [`GameSDK.init()`](#gamesdkinit)  
-  - [`GameSDK.login()`](#gamesdklogin)  
-  - [`GameSDK.menuShareMessage()`](#gamesdkmenusharemessage)  
-  - [`GameSDK.saveImageInLocal()`](#gamesdksaveimageinlocal)  
-  - [`GameSDK.exitWebview()`](#gamesdkexitwebview)  
-  - [`GameSDK.pay()`](#gamesdkpay)  
-- [Error Codes](#error-codes)  
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Download \& CDN](#download--cdn)
+- [Web Integration](#web-integration)
+- [Cocos Project Integration](#cocos-project-integration)
+  - [Setup](#setup)
+  - [Example Usage in Cocos Script](#example-usage-in-cocos-script)
+- [API Reference](#api-reference)
+  - [`GameSDK.init()`](#gamesdkinit)
+  - [`GameSDK.login()`](#gamesdklogin)
+  - [`GameSDK.showShareMenu()`](#gamesdkshowsharemenu)
+  - [`GameSDK.saveImageInLocal()`](#gamesdksaveimageinlocal)
+  - [`GameSDK.exit()`](#gamesdkexit)
+  - [`GameSDK.requestMidasPayment()`](#gamesdkrequestmidaspayment)
+- [Error Codes](#error-codes)
 
 ---
 
@@ -77,9 +80,9 @@ Include the SDK script in your HTML and initialize it as shown below:
         });
       };
 
-      // Exit WebView
-      document.getElementById('exitWebview').onclick = () => {
-        GameSDK.exitWebview({
+      // Exit
+      document.getElementById('exit').onclick = () => {
+        GameSDK.exit({
           success: () => {},
           fail: (error) => {}
         });
@@ -175,8 +178,8 @@ export class GameUI extends Component {
           fail: (error) => console.warn('Screen resize failed:', error)
         });
         break;
-      case 'exitWebView':
-        window.GameSDK.exitWebview({
+      case 'exit':
+        window.GameSDK.exit({
           success: () => log('Exited WebView successfully'),
           fail: (error) => console.warn('Exit WebView failed:', error)
         });
@@ -228,7 +231,7 @@ Obtains a temporary authorization code to retrieve user information.
 
 ---
 
-### `GameSDK.menuShareMessage()`
+### `GameSDK.showShareMenu()`
 
 Registers a callback to provide share data when user triggers menu share.
 
@@ -250,7 +253,7 @@ Registers a callback to provide share data when user triggers menu share.
 - **Example**:
 
   ```js
-  GameSDK.menuShareMessage(() => ({
+  GameSDK.showShareMenu(() => ({
     title: 'Share Title',
     desc: 'Share Description',
     icon: 'Share Icon',
@@ -286,19 +289,19 @@ Saves an image to the device's local album.
 
 ---
 
-### `GameSDK.exitWebview()`
+### `GameSDK.exit()`
 
 Exits the current WebView context.
 
 - **Example**:
 
   ```js
-  GameSDK.exitWebview();
+  GameSDK.exit();
   ```
 
 ---
 
-### `GameSDK.pay()`
+### `GameSDK.requestMidasPayment()`
 
 Initiates an in-app purchase.
 
@@ -312,7 +315,7 @@ Initiates an in-app purchase.
 - **Example**:
 
   ```js
-  GameSDK.pay({
+  GameSDK.requestMidasPayment({
     success: (res) => console.log(res),
     fail: (err) => console.error(err)
   });
