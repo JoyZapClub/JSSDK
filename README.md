@@ -29,9 +29,9 @@ You can get the latest version of the SDK from:
   [https://github.com/JoyZapClub/JSSDK/releases/](https://github.com/JoyZapClub/JSSDK/releases/)
 
 - **CDN**  
-  Direct link to v1.0.3:  
+  Direct link to v1.0.4:  
 
-  [https://developers.joyzap.io/sdk/JSSDK/1.0.3/GameSDK.1.0.3.umd.js](https://developers.joyzap.io/sdk/JSSDK/1.0.3/GameSDK.1.0.3.umd.js)
+  [https://developers.joyzap.io/sdk/JSSDK/1.0.4/GameSDK.1.0.4.umd.js](https://developers.joyzap.io/sdk/JSSDK/1.0.4/GameSDK.1.0.4.umd.js)
 
 
 
